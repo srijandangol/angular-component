@@ -1,0 +1,10 @@
+<!-- input-text.component.html -->
+<mat-form-field class="w-full">
+  <mat-label>{{ label }}</mat-label>
+  <input matInput
+  [type]="type"
+  [placeholder]="placeholder"
+  [(ngModel)]="value"
+  (ngModelChange)="valueChange.emit($event)"
+  class="rounded-lg p-2" />
+</mat-form-field>

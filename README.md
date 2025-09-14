@@ -12,6 +12,21 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
+## JSON Server
+
+This project includes a mock API server using JSON Server. To start it, run:
+
+```bash
+npx json-server --watch db.json
+```
+
+The server will start on `http://localhost:3000` with the following endpoints:
+- `GET /provinces` - Get list of all provinces with their districts
+
+You can access the full API documentation at `http://localhost:3000` when the server is running.
+
+> Note: The server automatically watches for changes in `db.json` and updates the API accordingly.
+
 ## Code scaffolding
 
 Angular CLI includes powerful code scaffolding tools. To generate a new component, run:

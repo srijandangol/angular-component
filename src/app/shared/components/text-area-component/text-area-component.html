@@ -1,0 +1,5 @@
+<mat-form-field class="w-full">
+  <mat-label>{{ label }}</mat-label>
+  <textarea matInput [rows]="rows" [(ngModel)]="value" (ngModelChange)="valueChange.emit($event)"
+    class="rounded-lg p-2"></textarea>
+</mat-form-field>
