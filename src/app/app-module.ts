@@ -5,12 +5,17 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
-import { FormExampleComponent } from './core/form-eg/form-eg';
 import { SharedModule } from './shared/shared-module';
 import { RouterModule, RouterOutlet } from '@angular/router';
+import { UserTableComponent } from './features/user/user.component/user.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { baseTableReducer } from './shared/tableComponent/store/table.reducer';
+import { BaseTableEffects } from './shared/tableComponent/store/table.effects';
+import { Demo } from './features/user/demo/demo';
 
 @NgModule({
-  declarations: [App, FormExampleComponent],
+  declarations: [App, UserTableComponent, Demo],
   imports: [
     BrowserModule, 
     AppRoutingModule, 
@@ -19,6 +24,8 @@ import { RouterModule, RouterOutlet } from '@angular/router';
     RouterOutlet,
     HttpClientModule,
     ReactiveFormsModule,
+      StoreModule.forRoot({ baseTable: baseTableReducer }),
+    EffectsModule.forRoot([BaseTableEffects]),
     FormsModule
   ],
   providers: [

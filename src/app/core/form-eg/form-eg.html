@@ -10,9 +10,9 @@
 
       <!-- Full Name -->
       <div>
-        <app-input-text label="Full Name" placeholder="Enter your full name" type="text"
+        <lib-input-text label="Full Name" placeholder="Enter your full name" type="text"
           [value]="myForm.get('fullName')?.value" (valueChange)="myForm.get('fullName')?.setValue($event)">
-        </app-input-text>
+        </lib-input-text>
         <div *ngIf="submitted && myForm.get('fullName')?.invalid" class="text-red-500 text-sm mt-1">
           <span *ngIf="myForm.get('fullName')?.errors?.['required']">Full name is required</span>
           <span *ngIf="myForm.get('fullName')?.errors?.['minlength']">Name must be at least 3 characters</span>
@@ -21,9 +21,9 @@
 
       <!-- Email -->
       <div>
-        <app-input-text label="Email" placeholder="Enter your email" type="email" [value]="myForm.get('email')?.value"
+        <lib-input-text label="Email" placeholder="Enter your email" type="email" [value]="myForm.get('email')?.value"
           (valueChange)="myForm.get('email')?.setValue($event)">
-        </app-input-text>
+        </lib-input-text>
         <div *ngIf="submitted && myForm.get('email')?.invalid" class="text-red-500 text-sm mt-1">
           <span *ngIf="myForm.get('email')?.errors?.['required']">Email is required</span>
           <span *ngIf="myForm.get('email')?.errors?.['email']">Please enter a valid email</span>
@@ -32,9 +32,9 @@
 
       <!-- Phone -->
       <div>
-        <app-input-text label="Phone Number" placeholder="Enter your 10-digit phone number" type="tel"
+        <lib-input-text label="Phone Number" placeholder="Enter your 10-digit phone number" type="tel"
           [value]="myForm.get('phone')?.value" (valueChange)="myForm.get('phone')?.setValue($event)">
-        </app-input-text>
+        </lib-input-text>
         <div *ngIf="submitted && myForm.get('phone')?.invalid" class="text-red-500 text-sm mt-1">
           <span *ngIf="myForm.get('phone')?.errors?.['required']">Phone number is required</span>
           <span *ngIf="myForm.get('phone')?.errors?.['pattern']">Please enter a valid 10-digit phone number</span>
@@ -43,33 +43,30 @@
 
       <!-- Province Dropdown -->
       <div>
-        <label class="block text-sm font-semibold text-gray-700 mb-1">Province</label>
-        <select formControlName="province"
-          class="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 bg-white"
-          [class.bg-gray-100]="isLoading">
-          <option [ngValue]="null" disabled>Select a province</option>
-          <option *ngFor="let province of provinces" [ngValue]="province.id">
-            {{ province.name }}
-          </option>
-        </select>
+        <app-dropdown
+          label="Select Province"
+          [options]="provinceOptions"
+          [placeholder]="'Select a province'"
+          [selectedValue]="myForm.get('province')?.value"
+          [disabled]="isLoading || provinceOptions.length === 0"
+          (selectedValueChange)="onProvinceChange($event)">
+        </app-dropdown>
         <div *ngIf="submitted && myForm.get('province')?.invalid" class="text-red-500 text-sm mt-1">
-          Please select a province
+          <span *ngIf="myForm.get('province')?.errors?.['required']">Province is required</span>
         </div>
       </div>
 
       <!-- District Dropdown -->
       <div>
-        <label class="block text-sm font-semibold text-gray-700 mb-1">District</label>
-        <select formControlName="district"
-          class="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 bg-white"
-          [class.bg-gray-100]="!myForm.get('province')?.value || isLoading">
-          <option [ngValue]="null" disabled>Select a district</option>
-          <option *ngFor="let district of districts" [ngValue]="district">
-            {{ district }}
-          </option>
-        </select>
+        <app-dropdown
+          label="Select District"
+          [options]="districtOptions"
+          [placeholder]="myForm.get('province')?.value ? 'Select a district' : 'Please select a province first'"
+          [(selectedValue)]="myForm.controls['district'].value"
+          [disabled]="isLoading || !myForm.get('province')?.value || districtOptions.length === 0">
+        </app-dropdown>
         <div *ngIf="submitted && myForm.get('district')?.invalid" class="text-red-500 text-sm mt-1">
-          Please select a district
+          <span *ngIf="myForm.get('district')?.errors?.['required']">District is required</span>
         </div>
       </div>
 
@@ -89,13 +86,12 @@
 
       <!-- Form Actions -->
       <div class="flex flex-col sm:flex-row justify-end gap-4 pt-6 border-t border-gray-200">
-        <app-button label="Cancel" buttonType="secondary" (click)="onCancel()" type="button" [disabled]="isLoading">
-        </app-button>
+        <lib-button 
+        (submit)="onSubmit()"
+    (cancel)="onCancel()" >
+        </lib-button>
 
-        <app-button [label]="isLoading ? 'Processing...' : 'Submit'" buttonType="primary" type="submit"
-          [loading]="isLoading" [disabled]="isLoading">
-        </app-button>
-      </div>
+             </div>
 
     </form>
   </div>

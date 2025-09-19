@@ -1,122 +1,160 @@
 {
+  "users": {
+    "total": 12,
+    "items": [
+      {
+        "id": 1,
+        "name": "John Doe",
+        "email": "john@example.com",
+        "role": "Admin",
+        "status": "Active",
+        "lastLogin": "2023-09-18T10:30:00Z",
+        "createdAt": "2023-01-15T08:00:00Z"
+      },
+      {
+        "id": 2,
+        "name": "Jane Smith",
+        "email": "jane.smith@example.com",
+        "role": "User",
+        "status": "Inactive",
+        "lastLogin": "2023-09-17T12:15:00Z",
+        "createdAt": "2023-02-10T09:00:00Z"
+      },
+      {
+        "id": 3,
+        "name": "Bob Johnson",
+        "email": "bob.johnson@example.com",
+        "role": "Manager",
+        "status": "Active",
+        "lastLogin": "2023-09-16T08:45:00Z",
+        "createdAt": "2023-03-05T10:00:00Z"
+      },
+      {
+        "id": 4,
+        "name": "Alice Williams",
+        "email": "alice.williams@example.com",
+        "role": "User",
+        "status": "Active",
+        "lastLogin": "2023-09-15T14:20:00Z",
+        "createdAt": "2023-04-01T11:00:00Z"
+      },
+      {
+        "id": 5,
+        "name": "Michael Brown",
+        "email": "michael.brown@example.com",
+        "role": "Admin",
+        "status": "Inactive",
+        "lastLogin": "2023-09-14T16:00:00Z",
+        "createdAt": "2023-05-10T12:30:00Z"
+      },
+      {
+        "id": 6,
+        "name": "Emma Davis",
+        "email": "emma.davis@example.com",
+        "role": "User",
+        "status": "Active",
+        "lastLogin": "2023-09-18T09:50:00Z",
+        "createdAt": "2023-06-05T09:15:00Z"
+      },
+      {
+        "id": 7,
+        "name": "William Martinez",
+        "email": "william.martinez@example.com",
+        "role": "Manager",
+        "status": "Inactive",
+        "lastLogin": "2023-09-17T11:30:00Z",
+        "createdAt": "2023-06-20T10:00:00Z"
+      },
+      {
+        "id": 8,
+        "name": "Olivia Garcia",
+        "email": "olivia.garcia@example.com",
+        "role": "User",
+        "status": "Active",
+        "lastLogin": "2023-09-16T15:10:00Z",
+        "createdAt": "2023-07-01T08:45:00Z"
+      },
+      {
+        "id": 9,
+        "name": "James Wilson",
+        "email": "james.wilson@example.com",
+        "role": "Admin",
+        "status": "Active",
+        "lastLogin": "2023-09-15T13:00:00Z",
+        "createdAt": "2023-07-10T09:30:00Z"
+      },
+      {
+        "id": 10,
+        "name": "Sophia Lee",
+        "email": "sophia.lee@example.com",
+        "role": "User",
+        "status": "Inactive",
+        "lastLogin": "2023-09-14T17:20:00Z",
+        "createdAt": "2023-08-01T10:00:00Z"
+      },
+      {
+        "id": 11,
+        "name": "Daniel Taylor",
+        "email": "daniel.taylor@example.com",
+        "role": "Manager",
+        "status": "Active",
+        "lastLogin": "2023-09-13T12:40:00Z",
+        "createdAt": "2023-08-15T11:15:00Z"
+      },
+      {
+        "id": 12,
+        "name": "Mia Anderson",
+        "email": "mia.anderson@example.com",
+        "role": "User",
+        "status": "Active",
+        "lastLogin": "2023-09-12T09:55:00Z",
+        "createdAt": "2023-09-01T08:30:00Z"
+      }
+    ]
+  },
+
+
   "provinces": [
     {
       "id": 1,
       "name": "Province No. 1",
       "districts": [
-        "Bhojpur",
-        "Dhankuta",
-        "Ilam",
-        "Jhapa",
-        "Khotang",
-        "Morang",
-        "Okhaldhunga",
-        "Panchthar",
-        "Sankhuwasabha",
-        "Solukhumbu",
-        "Sunsari",
-        "Taplejung",
-        "Terhathum",
-        "Udayapur"
+        "Bhojpur","Dhankuta","Ilam","Jhapa","Khotang","Morang","Okhaldhunga",
+        "Panchthar","Sankhuwasabha","Solukhumbu","Sunsari","Taplejung","Terhathum","Udayapur"
       ]
     },
     {
       "id": 2,
       "name": "Province No. 2 (Madhesh Province)",
-      "districts": [
-        "Bara",
-        "Dhanusha",
-        "Mahottari",
-        "Parsa",
-        "Rautahat",
-        "Saptari",
-        "Sarlahi",
-        "Siraha"
-      ]
+      "districts": ["Bara","Dhanusha","Mahottari","Parsa","Rautahat","Saptari","Sarlahi","Siraha"]
     },
     {
       "id": 3,
       "name": "Bagmati Province",
-      "districts": [
-        "Bhaktapur",
-        "Chitwan",
-        "Dhading",
-        "Dolakha",
-        "Kathmandu",
-        "Kavrepalanchok",
-        "Lalitpur",
-        "Makwanpur",
-        "Nuwakot",
-        "Ramechhap",
-        "Rasuwa",
-        "Sindhuli",
-        "Sindhupalchok"
-      ]
+      "districts": ["Bhaktapur","Chitwan","Dhading","Dolakha","Kathmandu","Kavrepalanchok",
+        "Lalitpur","Makwanpur","Nuwakot","Ramechhap","Rasuwa","Sindhuli","Sindhupalchok"]
     },
     {
       "id": 4,
       "name": "Gandaki Province",
-      "districts": [
-        "Baglung",
-        "Gorkha",
-        "Kaski",
-        "Lamjung",
-        "Manang",
-        "Mustang",
-        "Myagdi",
-        "Nawalpur",
-        "Parbat",
-        "Syangja",
-        "Tanahun"
-      ]
+      "districts": ["Baglung","Gorkha","Kaski","Lamjung","Manang","Mustang","Myagdi",
+        "Nawalpur","Parbat","Syangja","Tanahun"]
     },
     {
       "id": 5,
       "name": "Lumbini Province",
-      "districts": [
-        "Arghakhanchi",
-        "Banke",
-        "Bardiya",
-        "Dang",
-        "Gulmi",
-        "Kapilvastu",
-        "Nawalparasi West",
-        "Palpa",
-        "Pyuthan",
-        "Rolpa",
-        "Rukum West",
-        "Rupandehi"
-      ]
+      "districts": ["Arghakhanchi","Banke","Bardiya","Dang","Gulmi","Kapilvastu",
+        "Nawalparasi West","Palpa","Pyuthan","Rolpa","Rukum West","Rupandehi"]
     },
     {
       "id": 6,
       "name": "Karnali Province",
-      "districts": [
-        "Dolpa",
-        "Humla",
-        "Jumla",
-        "Kalikot",
-        "Mugu",
-        "Rukum East",
-        "Salyan",
-        "Surkhet",
-        "Jajarkot"
-      ]
+      "districts": ["Dolpa","Humla","Jumla","Kalikot","Mugu","Rukum East","Salyan","Surkhet","Jajarkot"]
     },
     {
       "id": 7,
       "name": "Sudurpashchim Province",
-      "districts": [
-        "Achham",
-        "Baitadi",
-        "Bajhang",
-        "Bajura",
-        "Dadeldhura",
-        "Darchula",
-        "Doti",
-        "Kailali",
-        "Kanchanpur"
-      ]
+      "districts": ["Achham","Baitadi","Bajhang","Bajura","Dadeldhura","Darchula","Doti","Kailali","Kanchanpur"]
     }
   ]
 }

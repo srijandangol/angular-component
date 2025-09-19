@@ -8,7 +8,6 @@ interface FormData {
   phone: string;
   province: number | null;
   district: string | null;
-  address: string;
   terms: boolean;
   notifications: boolean;
 }
@@ -25,6 +24,10 @@ export class FormExampleComponent implements OnInit {
   districts: string[] = [];
   submitted = false;
   isLoading = false;
+
+
+  provinceOptions: { value: number; label: string }[] = [];
+  districtOptions: { value: string; label: string }[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -44,65 +47,72 @@ export class FormExampleComponent implements OnInit {
       phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       province: [null, Validators.required],
       district: [{ value: null, disabled: true }, Validators.required],
-      address: ['', [Validators.required, Validators.maxLength(200)]],
       terms: [false, Validators.requiredTrue],
       notifications: [true]
     });
   }
 
-  private loadProvinces(): void {
-    this.isLoading = true;
-    this.locationService.getProvinces().subscribe({
-      next: (provinces) => {
-        this.provinces = provinces;
-        this.isLoading = false;
-      },
-      error: (error) => {
-        console.error('Error loading provinces:', error);
-        this.isLoading = false;
-      }
-    });
-  }
+ private loadProvinces(): void {
+  this.isLoading = true;
+  this.locationService.getProvinces().subscribe({
+    next: (provinces) => {
+      this.provinces = provinces;
+      // Map to DropdownOption
+      this.provinceOptions = provinces.map(p => ({ value: p.id, label: p.name }));
+      this.isLoading = false;
+    },
+    error: (error) => {
+      console.error('Error loading provinces:', error);
+      this.isLoading = false;
+    }
+  });
+}
+
 
   private setupFormListeners(): void {
     // When province changes, load its districts
     this.myForm.get('province')?.valueChanges.subscribe(provinceId => {
-      const districtControl = this.myForm.get('district');
-      
-      if (provinceId) {
-        this.loadDistricts(provinceId);
-        districtControl?.enable();
-      } else {
-        districtControl?.disable();
-        this.districts = [];
-      }
-      
-      // Reset district when province changes
-      districtControl?.setValue(null);
+      this.onProvinceChange(provinceId);
     });
   }
 
-  private loadDistricts(provinceId: number): void {
-    this.isLoading = true;
-    this.locationService.getDistricts(provinceId).subscribe({
-      next: (districts) => {
-        this.districts = districts;
-        this.isLoading = false;
-      },
-      error: (error) => {
-        console.error('Error loading districts:', error);
-        this.districts = [];
-        this.isLoading = false;
-      }
-    });
+  onProvinceChange(provinceId: number | null): void {
+    // Reset district when province changes
+    this.myForm.get('district')?.setValue(null);
+    
+    if (provinceId) {
+      this.loadDistricts(provinceId);
+    } else {
+      this.districtOptions = [];
+      this.myForm.get('district')?.disable();
+    }
   }
+
+ private loadDistricts(provinceId: number): void {
+  this.isLoading = true;
+  this.locationService.getDistricts(provinceId).subscribe({
+    next: (districts) => {
+      this.districts = districts;
+      // Map to DropdownOption
+      this.districtOptions = districts.map(d => ({ value: d, label: d }));
+      this.isLoading = false;
+    },
+    error: (error) => {
+      console.error('Error loading districts:', error);
+      this.districts = [];
+      this.districtOptions = [];
+      this.isLoading = false;
+    }
+  });
+}
 
   onSubmit(): void {
     this.submitted = true;
-    
+    const formData: FormData = this.myForm.value;
+    console.log('Form submitted:', formData);
     if (this.myForm.valid) {
-      const formData: FormData = this.myForm.value;
-      console.log('Form submitted:', formData);
+      
+      
       
       // Here you would typically send the form data to a server
       // For example:

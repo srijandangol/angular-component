@@ -11,6 +11,7 @@ import { CheckboxComponent } from './components/checkbox-component/checkbox-comp
 import { ButtonComponent } from './components/button-component/button-component';
 import { DropdownComponent } from './components/dropdown-component/dropdown-component';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
+import { BaseTableComponent } from './tableComponent/base-table-component/base-table-component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ClickOutsideDirective } from './directives/click-outside.directive';
     TextAreaComponent, 
     CheckboxComponent, 
     ButtonComponent, 
-    DropdownComponent
+    DropdownComponent, 
+    BaseTableComponent,
   ],
   imports: [
     CommonModule, 
@@ -33,6 +35,7 @@ import { ClickOutsideDirective } from './directives/click-outside.directive';
     CheckboxComponent,
     ButtonComponent,
     DropdownComponent,
+    BaseTableComponent,
     MaterialModule, // so other modules can use Material
     CommonModule,
     FormsModule,

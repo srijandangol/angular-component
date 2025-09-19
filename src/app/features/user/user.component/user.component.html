@@ -1,0 +1,11 @@
+<div class="user-table-container">
+  <app-base-table-component
+    [columns]="columns"
+    [rows]="(rows$ | async) || []"
+    [total]="(total$ | async) || 0"
+    [loading]="(loading$ | async) || false"
+    (pageChange)="onPageChange($event)"
+    (sortChange)="onSortChange($event)"
+    (filterChange)="onFilterChange($event)">
+  </app-base-table-component>
+</div>
