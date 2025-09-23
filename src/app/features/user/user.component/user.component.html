@@ -1,5 +1,6 @@
 <div class="user-table-container">
   <app-base-table-component
+    [tableTitle]="'User List'"
     [columns]="columns"
     [rows]="(rows$ | async) || []"
     [total]="(total$ | async) || 0"
