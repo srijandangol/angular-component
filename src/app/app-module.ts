@@ -12,10 +12,9 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { baseTableReducer } from './shared/tableComponent/store/table.reducer';
 import { BaseTableEffects } from './shared/tableComponent/store/table.effects';
-import { Demo } from './features/user/demo/demo';
 
 @NgModule({
-  declarations: [App, UserTableComponent, Demo],
+  declarations: [App, UserTableComponent, ],
   imports: [
     BrowserModule, 
     AppRoutingModule, 

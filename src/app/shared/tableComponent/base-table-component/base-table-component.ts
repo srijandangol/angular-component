@@ -21,6 +21,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./base-table-component.scss']
 })
 export class BaseTableComponent<T = any> implements AfterViewInit, OnChanges {
+  @Input() tableTitle: string = '';
   @Input() columns: TableColumn<T>[] = [];
   @Input() rows: T[] = [];
   @Input() total = 0;
