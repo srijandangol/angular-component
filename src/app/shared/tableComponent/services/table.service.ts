@@ -12,7 +12,7 @@ export class BaseTableService {
 
     return this.http.get<any>(endpoint).pipe(
       map((res) => ({
-        total: res.total,
+        total: res.length,
         items: res.items
       }))
     );

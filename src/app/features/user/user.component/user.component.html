@@ -7,6 +7,8 @@
     [loading]="(loading$ | async) || false"
     (pageChange)="onPageChange($event)"
     (sortChange)="onSortChange($event)"
-    (filterChange)="onFilterChange($event)">
+    (filterChange)="onFilterChange($event)"
+    (actionClicked)="handleAction($event)"
+  >
   </app-base-table-component>
 </div>

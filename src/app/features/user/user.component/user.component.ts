@@ -33,6 +33,25 @@ export class UserTableComponent implements OnInit {
     }));
   }
 
+    handleAction(event: { action: string; row: any }) {
+    if (event.action === 'view') {
+      // this.dialog.open(UserDetailComponent, {
+      //   data: event.row,
+      //   width: '600px'});
+      // this.router.navigate(['/users', event.row.id]);
+       console.log('View user', event.row);  
+    
+    }
+    if (event.action === 'edit') {
+      console.log('Edit user', event.row);
+      // open form or navigate
+    }
+    if (event.action === 'delete') {
+      console.log('Delete user', event.row);
+      // confirm + delete
+    }
+  }
+
   onPageChange(e: { page: number; pageSize?: number }) {
     this.store.dispatch(BaseTableActions.setBaseTablePage(e));
   }

@@ -13,16 +13,16 @@
 
 <div class="base-table space-y-6">
   <!-- Filter Section -->
-  <div class="filter-section flex flex-col md:flex-row items-center justify-around gap-4 mb-6">
+<div class="filter-section flex flex-col md:flex-row items-center justify-around gap-4 mb-6">
+  <div class="flex w-1/2 gap-4">
     <mat-form-field class="flex-1">
-  <mat-label>Filter by</mat-label>
-  <mat-select [(value)]="selectedFilterField">
-    <mat-option *ngFor="let col of filterableColumns" [value]="col.field.toString()">
-      {{ col.header }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-
+      <mat-label>Filter by</mat-label>
+      <mat-select [(value)]="selectedFilterField">
+        <mat-option *ngFor="let col of filterableColumns" [value]="col.field.toString()">
+          {{ col.header }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
     <mat-form-field class="flex-1">
       <mat-label>Search <mat-icon>search</mat-icon></mat-label>
@@ -33,6 +33,7 @@
       />
     </mat-form-field>
   </div>
+</div>
 
   <!-- Table -->
   <div class="overflow-x-auto rounded-lg border border-gray-500 shadow-sm mb-6">
@@ -54,18 +55,26 @@
               <ng-container *ngTemplateOutlet="getTemplate(col.field.toString()); context: { $implicit: row }"></ng-container>
             }
             @if (col.type === 'action') {
-              <div class="flex space-x-2">
-               <button mat-icon-button color="primary" (click)="onView(row)" aria-label="View">
-                  <mat-icon>visibility</mat-icon>
-                </button>
-                <button mat-icon-button color="accent" (click)="onEdit(row)" aria-label="Edit">
-                  <mat-icon>edit</mat-icon>
-                </button>
-                <button mat-icon-button color="warn" (click)="onDelete(row)" aria-label="Delete">
-                  <mat-icon>delete</mat-icon>
-                </button>
-              </div>
-            }
+  <div class="flex space-x-2">
+    <button mat-icon-button color="primary"
+            (click)="actionClicked.emit({ action: 'view', row: row })"
+            aria-label="View">
+      <mat-icon>visibility</mat-icon>
+    </button>
+    <button mat-icon-button color="accent"
+            (click)="actionClicked.emit({ action: 'edit', row: row })"
+            aria-label="Edit">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button color="warn"
+            (click)="actionClicked.emit({ action: 'delete', row: row })"
+            aria-label="Delete">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+}
+
+            
           </td>
         </ng-container>
       }

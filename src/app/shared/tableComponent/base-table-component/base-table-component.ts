@@ -33,6 +33,7 @@ export class BaseTableComponent<T = any> implements AfterViewInit, OnChanges {
   /** Toggle server-side vs client-side */
   @Input() serverSide = false;
 
+  @Output() actionClicked = new EventEmitter<{ action: string; row: any }>();
   @Output() pageChange = new EventEmitter<{ page: number; pageSize?: number }>();
   @Output() sortChange = new EventEmitter<{ field: string; direction: 'asc'|'desc' } | null>();
   @Output() filterChange = new EventEmitter<Record<string, any>>();
@@ -119,24 +120,5 @@ export class BaseTableComponent<T = any> implements AfterViewInit, OnChanges {
 
   get filterableColumns(): TableColumn<T>[] {
   return this.columns.filter(col => col.filterable);
-}
-
-
-  onView(row: T) {
-  console.log('View row', row);
-  alert('View click')
-  // emit event or navigate to details page
-}
-
-onEdit(row: T) {
-  console.log('Edit row', row);
-  alert('Edit click')
-  // emit event or open edit form
-}
-
-onDelete(row: T) {
-  console.log('Delete row', row);
-  alert('Delete click')
-  // emit event or confirm & delete
 }
 }
