@@ -21,13 +21,23 @@ export class UserTableComponent implements OnInit {
   rows$: Observable<any[]>;
   total$: Observable<number>;
   loading$: Observable<boolean>;
-  
+
   columns: TableColumn<any>[] = UserColumns;
+
 
   constructor(private store: Store) {
     this.rows$ = this.store.select(BaseTableSelectors.selectBaseTableItems);
     this.total$ = this.store.select(BaseTableSelectors.selectBaseTableTotal);
     this.loading$ = this.store.select(BaseTableSelectors.selectBaseTableLoading);
+
+    // Add debugging to see if store data is changing
+    this.rows$.subscribe(rows => {
+      console.log('User Component - Rows updated from store:', rows);
+    });
+
+    this.total$.subscribe(total => {
+      console.log('User Component - Total updated from store:', total);
+    });
   }
 
   ngOnInit(): void {
@@ -36,14 +46,14 @@ export class UserTableComponent implements OnInit {
     }));
   }
 
-    handleAction(event: { action: string; row: any }) {
+  handleAction(event: { action: string; row: any }) {
     if (event.action === 'view') {
       // this.dialog.open(UserDetailComponent, {
       //   data: event.row,
       //   width: '600px'});
       // this.router.navigate(['/users', event.row.id]);
-       console.log('View user', event.row);  
-    
+      console.log('View user', event.row);
+
     }
     if (event.action === 'edit') {
       console.log('Edit user', event.row);
@@ -66,10 +76,18 @@ export class UserTableComponent implements OnInit {
   }
 
   onFilterChange(filters: Record<string, any>) {
-    this.store.dispatch(BaseTableActions.setBaseTableFilters({ filters }));
+    console.log('User Component - Filter change received:', filters);
+    // Client-side filtering is handled by the base table component
+    // This method is called when filters are applied or cleared
+    if (Object.keys(filters).length === 0) {
+      console.log('User Component - All filters cleared, showing all data');
+    } else {
+      console.log('User Component - Filters applied:', filters);
+    }
   }
 
-    openAddUserForm() {
+
+  openAddUserForm() {
     console.log('Opening Add User Form...');
     // Navigate or open modal here
   }

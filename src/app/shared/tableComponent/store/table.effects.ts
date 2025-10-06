@@ -12,7 +12,6 @@ import * as BaseTableSelectors from './table.selectors';
 
 @Injectable()
 export class BaseTableEffects {
-
   private actions$ = inject(Actions);
   private store = inject(Store);
   private baseTableService = inject(BaseTableService);
@@ -21,29 +20,35 @@ export class BaseTableEffects {
   load$ = createEffect(() =>
     this.actions$.pipe(
       ofType(BaseTableActions.loadBaseTable),
-      mergeMap(({ request }) =>
-        this.baseTableService.fetch(request).pipe(
-          map((response: BaseTableResponse<any>) =>
-            BaseTableActions.loadBaseTableSuccess({ response, request })
-          ),
-          catchError((error) =>
-            of(BaseTableActions.loadBaseTableFailure({ error }))
-          )
-        )
-      )
+      mergeMap(({ request }) => {
+        console.log('Effects - Load action triggered with request:', request);
+        return this.baseTableService.fetch(request).pipe(
+          map((response: BaseTableResponse<any>) => {
+            console.log('Effects - Load success, response:', response);
+            return BaseTableActions.loadBaseTableSuccess({ response, request });
+          }),
+          catchError((error) => {
+            console.log('Effects - Load error:', error);
+            return of(BaseTableActions.loadBaseTableFailure({ error }));
+          })
+        );
+      })
     )
   );
 
-  // Effect to reload data on filter/sort/page changes
+  // Effect to reload data on sort/page changes
   reloadOnParams$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
-        BaseTableActions.setBaseTableFilters,
         BaseTableActions.setBaseTableSort,
         BaseTableActions.setBaseTablePage
       ),
       withLatestFrom(this.store.select(BaseTableSelectors.selectBaseTableRequest)),
-      map(([_, request]) => BaseTableActions.loadBaseTable({ request }))
+      map(([action, request]) => {
+        console.log('Effects - Action triggered:', action.type);
+        console.log('Effects - Request object:', request);
+        return BaseTableActions.loadBaseTable({ request });
+      })
     )
   );
 }

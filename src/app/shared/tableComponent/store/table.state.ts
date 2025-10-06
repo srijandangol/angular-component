@@ -8,7 +8,6 @@ export interface BaseTableState {
   page: number;
   pageSize: number;
   sort: { field: string; direction: 'asc' | 'desc' } | null;
-  filters: Record<string, any>;
   lastRequest: BaseTableRequest | null;
 }
 
@@ -20,6 +19,5 @@ export const initialState: BaseTableState = {
   page: 1,
   pageSize: 10,
   sort: null,
-  filters: {},
   lastRequest: null
 };

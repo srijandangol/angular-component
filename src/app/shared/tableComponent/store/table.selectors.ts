@@ -24,7 +24,6 @@ export const selectBaseTableRequest = createSelector(
     page: state.page,
     pageSize: state.pageSize,
     sort: state.sort,
-    filters: state.filters,
     endpoint: state.lastRequest?.endpoint
   })
 );

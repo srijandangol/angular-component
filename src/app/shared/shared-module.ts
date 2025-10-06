@@ -12,23 +12,25 @@ import { ButtonComponent } from './components/button-component/button-component'
 import { DropdownComponent } from './components/dropdown-component/dropdown-component';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { BaseTableComponent } from './tableComponent/base-table-component/base-table-component';
+import { FilterComponent } from './components/filter-component/filter.component';
 import { RouterModule } from '@angular/router';
 import { TableheaderComponent } from './tableComponent/tableheader.component/tableheader.component';
 
 @NgModule({
   declarations: [
-    InputTextComponent, 
-    TextAreaComponent, 
-    CheckboxComponent, 
-    ButtonComponent, 
-    DropdownComponent, 
+    InputTextComponent,
+    TextAreaComponent,
+    CheckboxComponent,
+    ButtonComponent,
+    DropdownComponent,
     BaseTableComponent,
     TableheaderComponent
   ],
   imports: [
-    CommonModule, 
-    FormsModule, 
-    ReactiveFormsModule, 
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FilterComponent,
     MaterialModule,
     RouterModule,
     ClickOutsideDirective // Import standalone directive here
@@ -40,6 +42,7 @@ import { TableheaderComponent } from './tableComponent/tableheader.component/tab
     ButtonComponent,
     DropdownComponent,
     BaseTableComponent,
+    FilterComponent,
     TableheaderComponent,
     MaterialModule, // so other modules can use Material
     CommonModule,
@@ -48,4 +51,4 @@ import { TableheaderComponent } from './tableComponent/tableheader.component/tab
     ClickOutsideDirective // Export standalone directive
   ],
 })
-export class SharedModule {}
+export class SharedModule { }

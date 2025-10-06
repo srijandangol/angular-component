@@ -12,9 +12,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   exports: [
@@ -24,7 +25,7 @@ import { MatCardModule } from '@angular/material/card';
     MatCheckboxModule,
     MatCardModule,
     MatFormFieldModule,
-MatExpansionModule,
+    MatExpansionModule,
     MatTableModule,
     MatInputModule,
     MatToolbarModule,
@@ -38,6 +39,7 @@ MatExpansionModule,
     MatSortModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatAutocompleteModule
   ],
 })
-export class MaterialModule {}
+export class MaterialModule { }

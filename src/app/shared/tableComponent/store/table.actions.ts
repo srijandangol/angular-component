@@ -16,10 +16,6 @@ export const loadBaseTableFailure = createAction(
   props<{ error: any }>()
 );
 
-export const setBaseTableFilters = createAction(
-  '[BaseTable] Set Filters',
-  props<{ filters: Record<string, any> }>()
-);
 
 export const setBaseTableSort = createAction(
   '[BaseTable] Set Sort',

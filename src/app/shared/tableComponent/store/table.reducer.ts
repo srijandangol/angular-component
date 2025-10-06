@@ -25,10 +25,6 @@ export const baseTableReducer = createReducer(
     error
   })),
 
-  on(BaseTableActions.setBaseTableFilters, (state, { filters }) => ({
-    ...state,
-    filters
-  })),
 
   on(BaseTableActions.setBaseTableSort, (state, { sort }) => ({
     ...state,

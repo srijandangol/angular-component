@@ -13,20 +13,19 @@ import { EffectsModule } from '@ngrx/effects';
 import { baseTableReducer } from './shared/tableComponent/store/table.reducer';
 import { BaseTableEffects } from './shared/tableComponent/store/table.effects';
 import { LayoutWrapperModule } from './features/layout-wrapper/layout-wrapper-module';
-import { TableheaderComponent } from './shared/tableComponent/tableheader.component/tableheader.component';
 
 @NgModule({
-  declarations: [App, UserTableComponent ],
+  declarations: [App, UserTableComponent],
   imports: [
-    BrowserModule, 
-    AppRoutingModule, 
-    SharedModule, 
-    RouterModule, 
+    BrowserModule,
+    AppRoutingModule,
+    SharedModule,
+    RouterModule,
     RouterOutlet,
     LayoutWrapperModule,
     HttpClientModule,
     ReactiveFormsModule,
-      StoreModule.forRoot({ baseTable: baseTableReducer }),
+    StoreModule.forRoot({ baseTable: baseTableReducer }),
     EffectsModule.forRoot([BaseTableEffects]),
     FormsModule
   ],
@@ -35,4 +34,4 @@ import { TableheaderComponent } from './shared/tableComponent/tableheader.compon
   ],
   bootstrap: [App],
 })
-export class AppModule {}
+export class AppModule { }

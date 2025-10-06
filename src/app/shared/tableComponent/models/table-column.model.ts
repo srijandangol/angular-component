@@ -6,6 +6,8 @@ export interface TableColumn<T> {
   width?: string;
   sortable?: boolean;
   filterable?: boolean;
+  filterOptions?: Array<{ value: any; label: string }>;
+  filterEndpoint?: string;
   type?: ColumnType;
 }
 
@@ -13,7 +15,6 @@ export interface BaseTableRequest {
   page: number;
   pageSize: number;
   sort?: { field: string; direction: 'asc' | 'desc' } | null;
-  filters?: { [key: string]: string };
   endpoint?: string;
 }
 
