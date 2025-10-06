@@ -1,13 +1,18 @@
 <div class="user-table-container">
+
+  <app-tableheader-component 
+  [tableTitle]="tableTitle"
+  [buttonLabel]="buttonLabel"
+  (buttonClicked)="openAddUserForm()">
+
+  </app-tableheader-component>
+
   <app-base-table-component
-    [tableTitle]="'User List'"
     [columns]="columns"
     [rows]="(rows$ | async) || []"
     [total]="(total$ | async) || 0"
-    [loading]="(loading$ | async) || false"
     (pageChange)="onPageChange($event)"
     (sortChange)="onSortChange($event)"
-    (filterChange)="onFilterChange($event)"
     (actionClicked)="handleAction($event)"
   >
   </app-base-table-component>

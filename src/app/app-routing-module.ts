@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BaseTableComponent } from './shared/tableComponent/base-table-component/base-table-component';
-import { UserTableComponent } from './features/user/user.component/user.component';
 
 const routes: Routes = [
-  // {path: '', loadChildren: () => import('./core/core.module').then(m => m.CoreModule)},
-  {path: '', component: UserTableComponent},
+  {
+    path: '',
+    loadChildren: () => import('./features/layout-wrapper/layout-wrapper-module').then(m => m.LayoutWrapperModule)
+  },
+  // Add any feature module routes here
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })], 
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

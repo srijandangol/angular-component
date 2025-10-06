@@ -1,0 +1,13 @@
+<nav class="h-full flex flex-col p-4 space-y-2">
+  @for (item of sidebarItems; track item.route) {
+  <a
+    [routerLink]="item.route"
+    routerLinkActive="bg-gray-700"
+    class="flex items-center space-x-3 p-2 rounded hover:bg-gray-700 transition"
+    (click)="sidebarItemClicked.emit()"
+  >
+    <mat-icon>{{ item.icon }}</mat-icon>
+    <span>{{ item.label }}</span>
+  </a>
+  }
+</nav>

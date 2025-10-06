@@ -1,0 +1,32 @@
+<header class="bg-gray-400 text-black flex justify-between items-center px-6 py-3 shadow">
+  <!-- Title -->
+  <span class="font-bold text-lg">{{ title }}</span>
+
+  <!-- Navigation -->
+  <nav class="flex space-x-6">
+    <a
+      *ngFor="let item of headerNavItems"
+      [routerLink]="item.route"
+      routerLinkActive="font-semibold underline"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="hover:text-blue-600 transition"
+    >
+      {{ item.label }}
+    </a>
+  </nav>
+</header>
+
+
+
+<!-- 
+    USAGES of HEADER COMPONENT
+
+<app-header 
+  [title]="'Admin Panel'"
+  [navItems]="[
+    { label: 'Home', route: '/home' },
+    { label: 'Users', route: '/users' },
+    { label: 'Settings', route: '/settings' }
+  ]"
+>
+</app-header> -->

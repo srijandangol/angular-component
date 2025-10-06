@@ -9,6 +9,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatMenuModule} from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   exports: [
@@ -16,10 +22,16 @@ import { MatTableModule } from '@angular/material/table';
     MatButtonModule,
     MatSelectModule,
     MatCheckboxModule,
+    MatCardModule,
     MatFormFieldModule,
+MatExpansionModule,
     MatTableModule,
     MatInputModule,
+    MatToolbarModule,
+    MatMenuModule,
     MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
     MatPaginatorModule,
     MatSelectModule,
     MatSelectModule,

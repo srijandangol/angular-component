@@ -1,0 +1,25 @@
+.btn-primary {
+  display: inline-flex;        // keeps icon + text aligned
+  align-items: center;         // vertically center icon and text
+  justify-content: space-between;     // center content horizontally
+  gap: 4px;                    // small space between icon and text
+
+  background-color: #1D4ED8;   // custom background color (blue)
+  color: #ffffff;              // text color
+  border: 2px solid #1D4ED8;  // border same as background
+  border-radius: 6px;          // rounded corners
+  padding: 8px 16px;           // top/bottom, left/right padding
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #2563EB; // slightly darker on hover
+    border-color: #2563EB;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); // focus ring
+  }
+}

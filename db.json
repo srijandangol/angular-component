@@ -1,11 +1,11 @@
 {
   "users": {
-    "total": 12,
+    "total": 25,
     "items": [
       {
         "id": 1,
         "name": "John Doe",
-        "email": "john@example.com",
+        "email": "john.doe@example.com",
         "role": "Admin",
         "status": "Active",
         "lastLogin": "2023-09-18T10:30:00Z",
@@ -109,6 +109,123 @@
         "status": "Active",
         "lastLogin": "2023-09-12T09:55:00Z",
         "createdAt": "2023-09-01T08:30:00Z"
+      },
+      {
+        "id": 13,
+        "name": "Liam Thomas",
+        "email": "liam.thomas@example.com",
+        "role": "Admin",
+        "status": "Inactive",
+        "lastLogin": "2023-09-18T07:40:00Z",
+        "createdAt": "2023-09-05T09:10:00Z"
+      },
+      {
+        "id": 14,
+        "name": "Ava Martinez",
+        "email": "ava.martinez@example.com",
+        "role": "Manager",
+        "status": "Active",
+        "lastLogin": "2023-09-17T15:25:00Z",
+        "createdAt": "2023-08-12T08:00:00Z"
+      },
+      {
+        "id": 15,
+        "name": "Noah Robinson",
+        "email": "noah.robinson@example.com",
+        "role": "User",
+        "status": "Active",
+        "lastLogin": "2023-09-16T14:15:00Z",
+        "createdAt": "2023-07-28T10:00:00Z"
+      },
+      {
+        "id": 16,
+        "name": "Isabella Clark",
+        "email": "isabella.clark@example.com",
+        "role": "Admin",
+        "status": "Inactive",
+        "lastLogin": "2023-09-15T11:05:00Z",
+        "createdAt": "2023-06-22T12:00:00Z"
+      },
+      {
+        "id": 17,
+        "name": "Ethan Lewis",
+        "email": "ethan.lewis@example.com",
+        "role": "User",
+        "status": "Active",
+        "lastLogin": "2023-09-14T16:35:00Z",
+        "createdAt": "2023-05-18T09:45:00Z"
+      },
+      {
+        "id": 18,
+        "name": "Harper Walker",
+        "email": "harper.walker@example.com",
+        "role": "Manager",
+        "status": "Active",
+        "lastLogin": "2023-09-13T14:45:00Z",
+        "createdAt": "2023-04-10T08:30:00Z"
+      },
+      {
+        "id": 19,
+        "name": "Benjamin Hall",
+        "email": "benjamin.hall@example.com",
+        "role": "Admin",
+        "status": "Active",
+        "lastLogin": "2023-09-12T18:30:00Z",
+        "createdAt": "2023-03-20T09:15:00Z"
+      },
+      {
+        "id": 20,
+        "name": "Charlotte Allen",
+        "email": "charlotte.allen@example.com",
+        "role": "User",
+        "status": "Inactive",
+        "lastLogin": "2023-09-11T17:05:00Z",
+        "createdAt": "2023-02-15T11:30:00Z"
+      },
+      {
+        "id": 21,
+        "name": "Lucas Young",
+        "email": "lucas.young@example.com",
+        "role": "Manager",
+        "status": "Active",
+        "lastLogin": "2023-09-10T13:15:00Z",
+        "createdAt": "2023-01-25T10:00:00Z"
+      },
+      {
+        "id": 22,
+        "name": "Amelia Hernandez",
+        "email": "amelia.hernandez@example.com",
+        "role": "User",
+        "status": "Active",
+        "lastLogin": "2023-09-09T14:20:00Z",
+        "createdAt": "2023-03-01T09:30:00Z"
+      },
+      {
+        "id": 23,
+        "name": "Logan King",
+        "email": "logan.king@example.com",
+        "role": "Admin",
+        "status": "Inactive",
+        "lastLogin": "2023-09-08T16:10:00Z",
+        "createdAt": "2023-04-12T12:15:00Z"
+      },
+      {
+        "id": 24,
+        "name": "Evelyn Wright",
+        "email": "evelyn.wright@example.com",
+        "role": "User",
+        "status": "Active",
+        "lastLogin": "2023-09-07T15:05:00Z",
+        "createdAt": "2023-05-08T11:45:00Z"
+      },
+      {
+        "id": 25,
+        "name": "Henry Scott",
+        "email": "henry.scott@example.com",
+        "role": "Manager",
+        "status": "Active",
+        "lastLogin": "2023-09-06T10:20:00Z",
+        "createdAt": "2023-06-18T09:15:00Z"
       }
     ]
   },

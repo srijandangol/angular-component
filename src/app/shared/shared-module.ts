@@ -12,6 +12,8 @@ import { ButtonComponent } from './components/button-component/button-component'
 import { DropdownComponent } from './components/dropdown-component/dropdown-component';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { BaseTableComponent } from './tableComponent/base-table-component/base-table-component';
+import { RouterModule } from '@angular/router';
+import { TableheaderComponent } from './tableComponent/tableheader.component/tableheader.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,14 @@ import { BaseTableComponent } from './tableComponent/base-table-component/base-t
     ButtonComponent, 
     DropdownComponent, 
     BaseTableComponent,
+    TableheaderComponent
   ],
   imports: [
     CommonModule, 
     FormsModule, 
     ReactiveFormsModule, 
     MaterialModule,
+    RouterModule,
     ClickOutsideDirective // Import standalone directive here
   ],
   exports: [
@@ -36,6 +40,7 @@ import { BaseTableComponent } from './tableComponent/base-table-component/base-t
     ButtonComponent,
     DropdownComponent,
     BaseTableComponent,
+    TableheaderComponent,
     MaterialModule, // so other modules can use Material
     CommonModule,
     FormsModule,

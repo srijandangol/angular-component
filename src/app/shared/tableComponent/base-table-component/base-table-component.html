@@ -4,34 +4,10 @@
 }
 
 <div class="base-table space-y-6">
-  <!-- Table Heading -->
-  <div class="text-2xl font-bold text-gray-800 text-center md:text-left mb-4">
-    {{ tableTitle }}
-  </div>
-
-  <div class="base-table space-y-6">
     <!-- Filter Section -->
-    <div class="filter-section flex flex-col md:flex-row items-center justify-around gap-4 mb-6">
-      <div class="flex w-1/2 gap-4">
-        <mat-form-field class="flex-1">
-          <mat-label>Filter by</mat-label>
-          <mat-select [(value)]="selectedFilterField">
-            <mat-option *ngFor="let col of filterableColumns" [value]="col.field.toString()">
-              {{ col.header }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field class="flex-1">
-          <mat-label>Search <mat-icon>search</mat-icon></mat-label>
-          <input
-            matInput
-            placeholder="Enter search text"
-            (input)="applyFilter(selectedFilterField, $event)"
-          />
-        </mat-form-field>
-      </div>
-    </div>
+    <button mat-raised-button color="primary" (click)="openFilterDialog()">
+  <mat-icon>filter_list</mat-icon> Filter
+</button>
 
     <!-- Table -->
     <div class="overflow-x-auto rounded-lg border border-gray-500 shadow-sm mb-6">
@@ -115,4 +91,3 @@
       </mat-paginator>
     </div>
   </div>
-</div>

@@ -14,12 +14,15 @@ import { UserColumns } from './user-column/tableColumns';
   styleUrls: ['./user.component.scss']
 })
 export class UserTableComponent implements OnInit {
+
+  tableTitle = 'Users';
+  buttonLabel = 'Add User';
+
   rows$: Observable<any[]>;
   total$: Observable<number>;
   loading$: Observable<boolean>;
   
   columns: TableColumn<any>[] = UserColumns;
-
 
   constructor(private store: Store) {
     this.rows$ = this.store.select(BaseTableSelectors.selectBaseTableItems);
@@ -64,5 +67,10 @@ export class UserTableComponent implements OnInit {
 
   onFilterChange(filters: Record<string, any>) {
     this.store.dispatch(BaseTableActions.setBaseTableFilters({ filters }));
+  }
+
+    openAddUserForm() {
+    console.log('Opening Add User Form...');
+    // Navigate or open modal here
   }
 }

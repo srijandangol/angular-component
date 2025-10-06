@@ -1,0 +1,12 @@
+<div class="base-table flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+  <!-- Table Title -->
+  <div class="text-2xl font-bold text-gray-800 text-center md:text-left">
+    {{ tableTitle }}
+  </div>
+
+  <!-- Generic Button -->
+  <button mat-raised-button (click)="onActionClick()" class="btn-primary">
+  <mat-icon class="text-white">add</mat-icon>
+  {{ buttonLabel || 'Add' }}
+</button>
+</div>

@@ -1,0 +1,36 @@
+<div class="flex flex-col h-screen">
+  <!-- Header -->
+  <header>
+    <app-header-component></app-header-component>
+  </header>
+
+  <div class="flex flex-1 overflow-hidden">
+    <app-sidebar-component
+      class="hidden md:block w-64 bg-gray-800 text-white h-full border-r border-gray-700"
+    ></app-sidebar-component>
+
+    <main class="flex-1 p-6 overflow-y-auto bg-gray-50">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+  <!-- Mobile sidebar overlay -->
+  @if (isSidebarOpen) {
+  <div class="fixed inset-0 z-50 md:hidden flex">
+    <div
+      class="fixed inset-0 bg-gray-100 bg-opacity-50"
+      (click)="toggleSidebar()"
+    ></div>
+
+    <app-sidebar-component
+      class="relative w-64 bg-gray-900 text-white border-r border-gray-700 shadow-xl"
+      (menuItemClicked)="onMenuItemClick()"
+    ></app-sidebar-component>
+  </div>
+  }
+
+  <!-- Footer -->
+  <footer>
+    <app-footer-component></app-footer-component>
+  </footer>
+</div>
