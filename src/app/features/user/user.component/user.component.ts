@@ -6,6 +6,10 @@ import * as BaseTableSelectors from '../../../shared/tableComponent/store/table.
 import * as BaseTableActions from '../../../shared/tableComponent/store/table.actions';
 import { TableColumn } from '../../../shared/tableComponent/models/table-column.model';
 import { UserColumns } from './user-column/tableColumns';
+import { Router } from '@angular/router';
+import { UserDetailComponent } from '../user-detail-component/user-detail-component';
+import { MatDialog } from '@angular/material/dialog';
+import { UserFormComponent } from '../user-form-component/user-form-component';
 
 @Component({
   selector: 'app-user',
@@ -25,7 +29,7 @@ export class UserTableComponent implements OnInit {
   columns: TableColumn<any>[] = UserColumns;
 
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private router: Router, private dialog: MatDialog) {
     this.rows$ = this.store.select(BaseTableSelectors.selectBaseTableItems);
     this.total$ = this.store.select(BaseTableSelectors.selectBaseTableTotal);
     this.loading$ = this.store.select(BaseTableSelectors.selectBaseTableLoading);
@@ -47,17 +51,18 @@ export class UserTableComponent implements OnInit {
   }
 
   handleAction(event: { action: string; row: any }) {
-    if (event.action === 'view') {
-      // this.dialog.open(UserDetailComponent, {
-      //   data: event.row,
-      //   width: '600px'});
-      // this.router.navigate(['/users', event.row.id]);
-      console.log('View user', event.row);
-
-    }
+      if (event.action === 'view') {
+    console.log('User ID:', event.row.id); // ✅ check actual ID
+    this.dialog.open(UserDetailComponent, {
+      width: '500px',
+      data: { userId: event.row.id }
+    });
+  }
     if (event.action === 'edit') {
-      console.log('Edit user', event.row);
-      // open form or navigate
+     this.dialog.open(UserFormComponent, {
+      width: '500px',
+      data: { userId: event.row.id }
+    });
     }
     if (event.action === 'delete') {
       console.log('Delete user', event.row);
@@ -88,7 +93,16 @@ export class UserTableComponent implements OnInit {
 
 
   openAddUserForm() {
-    console.log('Opening Add User Form...');
-    // Navigate or open modal here
-  }
+   const dialogRef = this.dialog.open(UserFormComponent, {
+    width: '400px',
+    data: { isEdit: false }
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      console.log('New User Added:', result);
+      // call API or update table
+    }
+  });
+}
 }

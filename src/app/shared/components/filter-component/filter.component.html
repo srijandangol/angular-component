@@ -1,26 +1,32 @@
-<h2 mat-dialog-title>Filter Table Data</h2>
+<!-- Dialog Header with Close Icon -->
+<div class="flex items-center justify-between mb-4">
+  <h2 mat-dialog-title>Filter Table Data</h2>
+  <button mat-icon-button (click)="close()" aria-label="Close">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
 
 <mat-dialog-content>
-    <form [formGroup]="filterForm" class="flex flex-col gap-4 w-full">
+  <form [formGroup]="filterForm" class="flex flex-col gap-4 w-full">
 
-        <!-- Dynamic Autocomplete Fields for Each Filterable Column -->
-        <div *ngFor="let column of filterableColumns" class="w-full">
-            <mat-form-field appearance="fill" class="w-full">
-                <mat-label>Filter by {{ column.header }}</mat-label>
-                <input matInput [formControlName]="column.field" [matAutocomplete]="auto"
-                    placeholder="Type to search..." />
-                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayWith">
-                    <mat-option *ngFor="let option of filteredOptions[column.field] | async" [value]="option.value">
-                        {{ option.label }}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
-        </div>
+    <!-- Dynamic Autocomplete Fields for Each Filterable Column -->
+    <div *ngFor="let column of filterableColumns" class="w-full">
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Filter by {{ column.header }}</mat-label>
+        <input matInput [formControlName]="column.field" [matAutocomplete]="auto"
+               placeholder="Type to search..." />
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayWith">
+          <mat-option *ngFor="let option of filteredOptions[column.field] | async" [value]="option.value">
+            {{ option.label }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
 
-    </form>
+  </form>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-    <button mat-button (click)="close()">Cancel</button>
-    <button mat-raised-button color="primary" (click)="applyFilter()">Apply Filters</button>
+  <button mat-stroked-button color="warn" (click)="resetFilters()">Reset Filter</button>
+  <button mat-raised-button color="primary" (click)="applyFilter()">Apply Filters</button>
 </mat-dialog-actions>

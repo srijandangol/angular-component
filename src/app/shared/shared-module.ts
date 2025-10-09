@@ -15,6 +15,7 @@ import { BaseTableComponent } from './tableComponent/base-table-component/base-t
 import { FilterComponent } from './components/filter-component/filter.component';
 import { RouterModule } from '@angular/router';
 import { TableheaderComponent } from './tableComponent/tableheader.component/tableheader.component';
+import { BaseFormComponent } from '../core/base-form-component/base-form-component';
 
 @NgModule({
   declarations: [

@@ -1,11 +1,19 @@
 <div class="user-table-container">
+  <div class="px-6 sm:px-10 lg:px-20 py-10 bg-gray-50 min-h-screen">
 
   <app-tableheader-component [tableTitle]="tableTitle" [buttonLabel]="buttonLabel" (buttonClicked)="openAddUserForm()">
 
   </app-tableheader-component>
 
-  <app-base-table-component [columns]="columns" [rows]="(rows$ | async) || []" [total]="(total$ | async) || 0"
-    [serverSide]="false" (pageChange)="onPageChange($event)" (sortChange)="onSortChange($event)"
-    (filterChange)="onFilterChange($event)" (actionClicked)="handleAction($event)">
+  <app-base-table-component 
+    [columns]="columns" 
+    [rows]="(rows$ | async) || []" 
+    [total]="(total$ | async) || 0"
+    [serverSide]="false" 
+    (pageChange)="onPageChange($event)" 
+    (sortChange)="onSortChange($event)"
+    (filterChange)="onFilterChange($event)" 
+    (actionClicked)="handleAction($event)">
   </app-base-table-component>
+  </div>
 </div>

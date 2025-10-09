@@ -1,0 +1,43 @@
+<div mat-dialog-content class="p-6 relative w-[350px] sm:w-[500px]">
+  <!-- Header with Back Button -->
+  <div class="flex items-center justify-between mb-4">
+    <button
+      mat-icon-button
+      (click)="onClose()"
+      aria-label="Close"
+      class="flex items-center"
+    >
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h2 class="text-xl font-semibold">User Details</h2>
+    <span></span> <!-- Spacer for symmetry -->
+  </div>
+
+  <!-- User Content -->
+  <ng-container *ngIf="!loading; else loadingTpl">
+    <div *ngIf="user; else noDataTpl" class="space-y-3">
+      <!-- Display Uploaded Picture -->
+      <div *ngIf="user.profilePicture" class="flex justify-center">
+        <img
+      [src]="user.profilePicture"
+      alt="Profile Picture"
+      class="w-32 h-32 object-cover border rounded-md"
+    />
+      </div>
+      <p><strong>ID:</strong> {{ user.id }}</p>
+      <p><strong>Name:</strong> {{ user.name }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>Phone:</strong> {{ user.phone }}</p>
+    </div>
+  </ng-container>
+
+  <!-- Loading Template -->
+  <ng-template #loadingTpl>
+    <p class="text-gray-500 text-center">Loading user details...</p>
+  </ng-template>
+
+  <!-- No Data Template -->
+  <ng-template #noDataTpl>
+    <p class="text-gray-500 text-center">No user found.</p>
+  </ng-template>
+</div>
