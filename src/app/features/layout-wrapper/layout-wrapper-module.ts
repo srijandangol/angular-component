@@ -7,6 +7,7 @@ import { SidebarComponent } from '../../shared/constant-component/sidebar-compon
 import { FooterComponent } from '../../shared/constant-component/footer-component/footer-component';
 import { HeaderComponent } from '../../shared/constant-component/header-component/header-component';
 import { MaterialModule } from '../../shared/material/material-module';
+import { ProductModule } from '../product/product-module';
 
 
 
@@ -17,7 +18,8 @@ import { MaterialModule } from '../../shared/material/material-module';
   imports: [
     CommonModule,
     MaterialModule,
-    LayoutWrapperRoutingModule
+    LayoutWrapperRoutingModule,
+    ProductModule
   ],
   exports: [WrapperComponent]
 })

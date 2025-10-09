@@ -1,4 +1,3 @@
-<!-- Dialog Header with Close Icon -->
 <div class="flex items-center justify-between mb-4">
   <h2 mat-dialog-title>Filter Table Data</h2>
   <button mat-icon-button (click)="close()" aria-label="Close">
@@ -8,13 +7,10 @@
 
 <mat-dialog-content>
   <form [formGroup]="filterForm" class="flex flex-col gap-4 w-full">
-
-    <!-- Dynamic Autocomplete Fields for Each Filterable Column -->
     <div *ngFor="let column of filterableColumns" class="w-full">
       <mat-form-field appearance="fill" class="w-full">
         <mat-label>Filter by {{ column.header }}</mat-label>
-        <input matInput [formControlName]="column.field" [matAutocomplete]="auto"
-               placeholder="Type to search..." />
+        <input matInput [formControlName]="column.field" [matAutocomplete]="auto" placeholder="Type to search..." />
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayWith">
           <mat-option *ngFor="let option of filteredOptions[column.field] | async" [value]="option.value">
             {{ option.label }}
@@ -22,7 +18,6 @@
         </mat-autocomplete>
       </mat-form-field>
     </div>
-
   </form>
 </mat-dialog-content>
 

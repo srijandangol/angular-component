@@ -1,9 +1,6 @@
 <h2 mat-dialog-title>{{ isEditMode ? 'Edit User' : 'Add User' }}</h2>
 
 <mat-dialog-content>
-  <app-base-form-component
-    [config]="formConfig"
-    [initialData]="data?.user || {}"
-    (formSubmit)="onSubmit($event)">
+  <app-base-form-component [config]="formConfig" [initialData]="data?.user || {}" (formSubmit)="onSubmit($event)">
   </app-base-form-component>
 </mat-dialog-content>

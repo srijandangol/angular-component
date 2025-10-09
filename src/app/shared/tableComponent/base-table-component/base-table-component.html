@@ -1,10 +1,8 @@
-<!-- Loading Indicator -->
 @if (loading) {
 <div class="mb-4 text-center text-blue-600 font-medium">Loading...</div>
 }
 
 <div class="base-table space-y-6">
-  <!-- Filter Section - Top Right -->
   <div class="flex justify-end mb-4">
     <div class="flex gap-2">
       @if (hasActiveFilters()) {
@@ -18,11 +16,9 @@
     </div>
   </div>
 
-  <!-- Table -->
   <div class="overflow-x-auto rounded-lg border border-gray-500 shadow-sm mb-6">
     <table mat-table [dataSource]="dataSource" matSort (matSortChange)="onSortChange($event)"
       class="min-w-full divide-y divide-gray-200">
-      <!-- Dynamic Columns -->
       @for (col of columns; track col.field) {
       <ng-container [matColumnDef]="col.field.toString()">
         <th mat-header-cell *matHeaderCellDef mat-sort-header
@@ -55,13 +51,11 @@
       </ng-container>
       }
 
-      <!-- Header & Rows -->
       <tr mat-header-row *matHeaderRowDef="displayedColumns" class="border-b border-gray-300"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns" class="hover:bg-gray-50"></tr>
     </table>
   </div>
 
-  <!-- Pagination -->
   <div class="w-full">
     <mat-paginator [length]="total" [pageSize]="pageSize" [pageIndex]="page - 1" [pageSizeOptions]="[5, 10, 25, 50]"
       (page)="onPageChange($event)" class="shadow rounded-md">
