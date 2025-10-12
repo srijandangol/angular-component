@@ -1,53 +1,113 @@
 <form [formGroup]="productForm" class="flex flex-col gap-4 p-4 max-w-3xl mx-auto">
-    <mat-form-field appearance="fill">
-        <mat-label>Product Name</mat-label>
-        <input matInput formControlName="name" placeholder="Enter product name" />
-        <mat-error *ngIf="productForm.get('name')?.hasError('required')">Name is required</mat-error>
-    </mat-form-field>
 
-    <mat-form-field appearance="fill">
-        <mat-label>Description</mat-label>
-        <textarea matInput rows="3" formControlName="description" placeholder="Enter description"></textarea>
-    </mat-form-field>
+  <!-- Product Name -->
+  <mat-form-field appearance="fill">
+    <mat-label>Product Name</mat-label>
+    <input matInput formControlName="name" placeholder="Enter product name" />
+    <mat-error *ngIf="productForm.get('name')?.hasError('required')">Name is required</mat-error>
+  </mat-form-field>
 
-    <div class="flex items-center justify-between">
-        <h3 class="text-lg font-semibold">Variants</h3>
-        <button mat-stroked-button color="primary" type="button" (click)="addVariant()">
-            <mat-icon>add</mat-icon> Add Variant
+  <!-- Description -->
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <textarea matInput rows="3" formControlName="description" placeholder="Enter description"></textarea>
+  </mat-form-field>
+
+  <!-- Variants Header -->
+  <div class="flex items-center justify-between">
+    <h3 class="text-lg font-semibold">Variants</h3>
+    <button
+      mat-stroked-button
+      color="primary"
+      type="button"
+      (click)="addVariant()"
+      [disabled]="isAddDisabled"
+    >
+      <mat-icon>add</mat-icon> Add Variant
+    </button>
+  </div>
+
+  <!-- FormArray -->
+  <div formArrayName="variants" class="space-y-4">
+    <div *ngFor="let variant of variants.controls; let i = index" [formGroupName]="i"
+         class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end border p-4 rounded-lg">
+
+      <!-- Dropdown -->
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Variant Type</mat-label>
+        <mat-select formControlName="variantType" placeholder="Select variant">
+          <mat-option [value]="null" disabled>Select</mat-option>
+          <mat-option *ngFor="let opt of availableOptionsFor(i)" [value]="opt.id">
+            {{ opt.label }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="variant.get('variantType')?.hasError('required')">
+          Variant type is required
+        </mat-error>
+        <mat-error *ngIf="variant.get('variantType')?.hasError('duplicate')">
+          This option is already selected
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+  <mat-label>Color</mat-label>
+  <mat-select formControlName="color">
+    <mat-option *ngFor="let color of availableColorsFor(i)" [value]="color.id">
+      {{ color.label }}
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="variant.get('color')?.hasError('required')">
+    Color is required
+  </mat-error>
+</mat-form-field>
+
+
+      <!-- SKU -->
+      <mat-form-field appearance="fill">
+        <mat-label>SKU</mat-label>
+        <input matInput formControlName="sku" placeholder="SKU" />
+      </mat-form-field>
+
+      <!-- Price -->
+      <mat-form-field appearance="fill">
+        <mat-label>Price</mat-label>
+        <input matInput type="number" formControlName="price" placeholder="0" />
+      </mat-form-field>
+
+
+
+      <!-- Frequency Dropdown -->
+<mat-form-field appearance="fill">
+  <mat-label>Frequency</mat-label>
+  <mat-select formControlName="frequency">
+    <mat-option *ngFor="let f of frequencyOptions" [value]="f.id">{{ f.label }}</mat-option>
+  </mat-select>
+  <mat-error *ngIf="variant.get('frequency')?.hasError('required')">
+    Frequency is required
+  </mat-error>
+</mat-form-field>
+
+<!-- Duration Dropdown -->
+<mat-form-field appearance="fill">
+  <mat-label>Duration</mat-label>
+  <mat-select formControlName="duration">
+    <mat-option *ngFor="let d of durationOptions" [value]="d.id">{{ d.label }}</mat-option>
+  </mat-select>
+  <mat-error *ngIf="variant.get('duration')?.hasError('required')">
+    Duration is required
+  </mat-error>
+</mat-form-field>
+
+      <!-- Remove Button -->
+      <div class="flex gap-2 justify-end">
+        <button mat-stroked-button color="warn" type="button" (click)="removeVariant(i)">
+          <mat-icon>remove</mat-icon> Remove
         </button>
+      </div>
     </div>
+  </div>
 
-    <div formArrayName="variants" class="space-y-4">
-        <div *ngFor="let variant of variants.controls; let i = index" [formGroupName]="i"
-            class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
-            <mat-form-field appearance="fill">
-                <mat-label>SKU</mat-label>
-                <input matInput formControlName="sku" placeholder="SKU" />
-                <mat-error *ngIf="variant.get('sku')?.hasError('required')">SKU is required</mat-error>
-            </mat-form-field>
-
-            <mat-form-field appearance="fill">
-                <mat-label>Price</mat-label>
-                <input matInput type="number" formControlName="price" placeholder="0" />
-                <mat-error *ngIf="variant.get('price')?.hasError('min')">Must be >= 0</mat-error>
-            </mat-form-field>
-
-            <mat-form-field appearance="fill">
-                <mat-label>Stock</mat-label>
-                <input matInput type="number" formControlName="stock" placeholder="0" />
-                <mat-error *ngIf="variant.get('stock')?.hasError('min')">Must be >= 0</mat-error>
-            </mat-form-field>
-
-            <div class="flex gap-2">
-                <button mat-stroked-button color="warn" type="button" (click)="removeVariant(i)"
-                    [disabled]="variants.length === 1">
-                    <mat-icon>remove</mat-icon> Remove
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <div class="flex justify-end">
-        <button mat-raised-button color="primary" type="button" (click)="submit()">Save Product</button>
-    </div>
+  <div class="flex justify-end">
+    <button mat-raised-button color="primary" type="button" (click)="submit()">Save Product</button>
+  </div>
 </form>
